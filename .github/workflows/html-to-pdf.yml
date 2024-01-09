@@ -1,4 +1,15 @@
-uses: markwilson/html2pdf@v1.0
-with:
-  htmlPath: './index.html'
-  pdfName: './public/test.pdf'
+on:
+  push:
+    branches:
+    - '*'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    name: HTML-PDF
+    steps:
+    - uses: frnode/html-to-pdf-action@master
+      with:
+        htmlFile: ./public/index.html
+        outputFile: ./public/resume.pdf
+        pdfOptions: '{"format": "A4", "margin": {"top": "10mm", "left": "10mm", "right": "10mm", "bottom": "10mm"}}'
