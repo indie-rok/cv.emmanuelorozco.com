@@ -8,7 +8,7 @@ jobs:
     runs-on: ubuntu-latest
     name: HTML-PDF
     steps:
-    - uses: frnode/html-to-pdf-action@master
+    - uses: fifsky/html-to-pdf-action@master
       with:
         htmlFile: ./public/index.html
         outputFile: ./public/resume.pdf
