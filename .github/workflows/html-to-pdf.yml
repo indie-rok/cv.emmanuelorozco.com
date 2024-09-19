@@ -37,7 +37,7 @@ jobs:
     - name: Convert HTML to PDF
       uses: fifsky/html-to-pdf-action@master
       with:
-        htmlFile: ./public/index.html
+        htmlFile: ./tech.html
         outputFile: ./public/resume.pdf
         pdfOptions: '{"format": "A4", "margin": {"top": "10mm", "left": "10mm", "right": "10mm", "bottom": "10mm"}}'
 
