@@ -1,9 +1,21 @@
+.cv-container {
+  max-width: 90%;
+}
+
 .contact-info {
   padding: 20px 0;
 }
 
 .title {
   border-bottom: 1px solid black;
+  padding-bottom: 12px;
+  margin-bottom: 12px;
+  font-size: 1.5em;
+}
+
+.job-title > .col-sm:first-child {
+  font-size: 1.1em;
+  margin-bottom: 12px;
 }
 
 .blue {
@@ -12,4 +24,10 @@
 
 .tools {
   color: #27ae60;
+}
+
+@media (max-width: 768px) {
+  .cv-container {
+    max-width: 90%;
+  }
 }
