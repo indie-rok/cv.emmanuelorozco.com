@@ -38,7 +38,7 @@ jobs:
       uses: fifsky/html-to-pdf-action@master
       with:
         htmlFile: ./tech.html
-        outputFile: ./pdf/tech.pdf
+        outputFile: ./public/tech.pdf
         pdfOptions: '{"format": "A4", "margin": {"top": "10mm", "left": "10mm", "right": "10mm", "bottom": "10mm"}, "scale": 1.5}'
 
     # Step to check if resume.pdf was created
