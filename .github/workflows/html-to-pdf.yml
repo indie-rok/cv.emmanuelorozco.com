@@ -1,3 +1,5 @@
+name: HTML to PDF Workflow
+
 on:
   push:
     branches:
@@ -8,8 +10,51 @@ jobs:
     runs-on: ubuntu-latest
     name: HTML-PDF
     steps:
-    - uses: fifsky/html-to-pdf-action@master
+    # Checkout your repository's code
+    - name: Checkout repository
+      uses: actions/checkout@v2
+
+    # Step to list the files to check the directory structure
+    - name: List files in the repository
+      run: ls -al
+
+    # Step to check if 'public' directory exists and list its content
+    - name: Check public directory
+      run: |
+        if [ -d "./public" ]; then
+          echo "public directory exists."
+          ls -al ./public
+        else
+          echo "public directory does not exist."
+          exit 1
+        fi
+
+    # Step to check if the index.html file exists
+    - name: Check if index.html exists
+      run: |
+        if [ -f "./public/index.html" ]; then
+          echo "index.html exists."
+          cat ./public/index.html
+        else
+          echo "index.html does not exist."
+          exit 1
+        fi
+
+    # Action to convert HTML to PDF
+    - name: Convert HTML to PDF
+      uses: fifsky/html-to-pdf-action@master
       with:
         htmlFile: ./public/index.html
         outputFile: ./public/resume.pdf
         pdfOptions: '{"format": "A4", "margin": {"top": "10mm", "left": "10mm", "right": "10mm", "bottom": "10mm"}}'
+
+    # Step to check if resume.pdf was created
+    - name: Check if resume.pdf was created
+      run: |
+        if [ -f "./public/resume.pdf" ]; then
+          echo "PDF was created successfully."
+          ls -al ./public/resume.pdf
+        else
+          echo "Failed to create resume.pdf."
+          exit 1
+        fi
