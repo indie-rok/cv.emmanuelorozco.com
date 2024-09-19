@@ -51,3 +51,12 @@ jobs:
           echo "Failed to create resume.pdf."
           exit 1
         fi
+        # Commit the PDF file to the repository
+
+    - name: Commit PDF to repository
+      run: |
+        git config --local user.email "indi3.rok@gmail.com"
+        git config --local user.name "Generate PDF"
+        git add ./public/resume.pdf
+        git commit -m "Add generated resume.pdf"
+        git push
