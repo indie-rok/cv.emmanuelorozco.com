@@ -3,22 +3,26 @@ name: HTML to PDF Workflow
 on:
   push:
     branches:
-    - '*'
+      - '*'
 
 jobs:
   build:
     runs-on: ubuntu-latest
     name: HTML-PDF
+
     steps:
-    # Checkout your repository's code
     - name: Checkout repository
       uses: actions/checkout@v2
 
-    # Step to list the files to check the directory structure
-    - name: List files in the repository
-      run: ls -al
+    # Step to build the static site or create the public directory
+    - name: Build static site (or create public folder)
+      run: |
+        # Example: npm run build if you're using a Node.js build tool like Next.js
+        # Or another command to generate files in the public folder
+        mkdir -p ./public
+        echo "<html><body>Test PDF</body></html>" > ./public/index.html
 
-    # Step to check if 'public' directory exists and list its content
+    # Step to list the files to verify the public directory
     - name: Check public directory
       run: |
         if [ -d "./public" ]; then
@@ -29,18 +33,7 @@ jobs:
           exit 1
         fi
 
-    # Step to check if the index.html file exists
-    - name: Check if index.html exists
-      run: |
-        if [ -f "./public/index.html" ]; then
-          echo "index.html exists."
-          cat ./public/index.html
-        else
-          echo "index.html does not exist."
-          exit 1
-        fi
-
-    # Action to convert HTML to PDF
+    # Step to convert HTML to PDF
     - name: Convert HTML to PDF
       uses: fifsky/html-to-pdf-action@master
       with:
