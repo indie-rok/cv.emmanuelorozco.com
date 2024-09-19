@@ -1,3 +1,7 @@
+body {
+  font-family: "Noto Color Emoji", sans-serif;
+}
+
 .cv-container {
   max-width: 90%;
 }
@@ -24,6 +28,10 @@
 
 .tools {
   color: #27ae60;
+}
+
+.languages-spoken {
+  font-family: "Noto Color Emoji", sans-serif;
 }
 
 @media (max-width: 768px) {
