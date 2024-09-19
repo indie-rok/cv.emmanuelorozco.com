@@ -1,9 +1,5 @@
-body {
-  font-family: "Noto Color Emoji", sans-serif;
-}
-
-.cv-container {
-  max-width: 90%;
+.container {
+  max-width: 90% !important;
 }
 
 .contact-info {
